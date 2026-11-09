@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Golpes e Pix no Brasil — Gustavo Rodrigues Lopes</title>
+<meta name="description" content="O que oito anos de dados mostram sobre o estelionato no Brasil antes do Pix, na era Pix e na era da IA (2018 a 2025).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<header class="barra">
+  <div class="wrap">
+    <a class="logo" href="https://www.desenvolvedorgustavolopes.com.br/"><span>~/</span>gustavo</a>
+    <nav class="menu" aria-label="Navegação principal">
+      <ul>
+        <li><a href="#explorar">#explorar</a></li>
+        <li><a href="#pix">#pix</a></li>
+        <li><a href="metodologia.html">#metodologia</a></li>
+        <li><a href="https://github.com/guh99998/analise-golpes" target="_blank" rel="noopener noreferrer">#github</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <main id="conteudo">
+    <div class="hero">
+      <p class="eyebrow">// pesquisa por curiosidade</p>
+      <h1>Golpes no Brasil: antes do Pix, no Pix e na era da IA</h1>
+      <p class="lead">O estelionato registrado no país quintuplicou entre 2018 e 2025. Mas o Pix sozinho não explica. Explore os dados por estado e veja onde estão as ressalvas.</p>
+    </div>
+
+    <section id="explorar" aria-labelledby="t-explorar">
+      <h2 id="t-explorar"><span class="hash">#</span> Estelionato por estado</h2>
+      <p class="sub">Registros policiais de estelionato (incluindo fraude eletrônica a partir de 2021). Escolha um estado, a medida e compare com o Brasil.</p>
+      <div class="card">
+        <div class="controles">
+          <label class="campo">estado
+            <select id="uf"></select>
+          </label>
+          <div class="campo" role="group" aria-label="Medida">medida
+            <div class="seg">
+              <button type="button" data-medida="taxa" aria-pressed="true">por 100 mil hab.</button>
+              <button type="button" data-medida="abs" aria-pressed="false">absoluto</button>
+              <button type="button" data-medida="pix" aria-pressed="false" id="btn-pix">por milhão de Pix</button>
+            </div>
+          </div>
+          <label class="check"><input type="checkbox" id="ck-ele"><span>Só o eletrônico</span></label>
+          <label class="check"><input type="checkbox" id="ck-br" checked><span>Comparar com o Brasil</span></label>
+        </div>
+        <div class="erasleg" aria-label="Legenda das eras">
+          <span class="era"><i style="background:var(--band-pre)"></i>Pré-Pix</span>
+          <span class="era"><i style="background:var(--band-trans)"></i>Transição (2020)</span>
+          <span class="era"><i style="background:var(--band-pix)"></i>Pix</span>
+          <span class="era"><i style="background:var(--band-ia)"></i>Pix + IA</span>
+        </div>
+        <div class="grafico"><canvas id="g-principal" role="img" aria-label="Gráfico do estelionato por ano"></canvas></div>
+        <div class="kpis" id="kpis"></div>
+        <p class="aviso" id="aviso"></p>
+        <details>
+          <summary>$ ver como tabela</summary>
+          <table id="tabela"></table>
+        </details>
+        <div class="baixar">
+          <a href="dados/estelionato_consolidado.csv" download>↓ dados por estado (csv)</a>
+          <a href="dados/painel_brasil_anual.csv" download>↓ painel Brasil (csv)</a>
+          <a href="dados/estelionato_bruto.csv" download>↓ todas as edições (csv)</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="pix" aria-labelledby="t-pix">
+      <h2 id="t-pix"><span class="hash">#</span> O Pix e as contestações de fraude</h2>
+      <p class="sub">Dados nacionais do Banco Central. O MED (Mecanismo Especial de Devolução) só aparece nos dados a partir de 2022.</p>
+      <div class="duas">
+        <div class="card">
+          <h3>Transações Pix por ano (bilhões)</h3>
+          <div class="grafico pequeno"><canvas id="g-pix" role="img" aria-label="Transações Pix por ano"></canvas></div>
+          <p class="nota">2020 tem só nov e dez; os anos seguintes estão completos.</p>
+        </div>
+        <div class="card">
+          <h3>Pix contestados e aceitos (milhões)</h3>
+          <div class="grafico pequeno"><canvas id="g-med" role="img" aria-label="Pix contestados e aceitos por ano"></canvas></div>
+          <p class="nota">Contestar não é o mesmo que ser golpe: a maioria das contestações é rejeitada.</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="t-leitura">
+      <h2 id="t-leitura"><span class="hash">#</span> Como ler isso</h2>
+      <div class="card caixa">
+        <ul>
+          <li><b>Pandemia:</b> o maior salto foi em 2020 (+77% nos registros, +70% na taxa por 100 mil), quando o Pix existia só em nov e dez.</li>
+          <li><b>Lei 14.155/2021:</b> a fraude eletrônica passou a contar como estelionato, o que muda o registro.</li>
+          <li><b>Ritmo:</b> o crescimento anual caiu de cerca de +40% em 2021 e 2022 para +3% em 2025.</li>
+          <li><b>Correlação, não causa:</b> os dados não medem o uso de IA nem separam golpe por meio de pagamento.</li>
+        </ul>
+        <p style="margin:14px 0 0"><a href="metodologia.html">Leia todas as ressalvas dos dados →</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><b>Fontes:</b> Anuário Brasileiro de Segurança Pública (Fórum Brasileiro de Segurança Pública), edições 16 a 20; Banco Central do Brasil (estatísticas de transações Pix e do MED).</p>
+    <p>Pesquisa de Gustavo Rodrigues Lopes. A pergunta, o recorte e a interpretação são do autor; o código de extração e análise foi escrito com o apoio do Claude Code (IA da Anthropic).</p>
+    <p><a href="https://www.desenvolvedorgustavolopes.com.br/">← voltar ao portfólio</a> · <a href="https://github.com/guh99998/analise-golpes" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+  </footer>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

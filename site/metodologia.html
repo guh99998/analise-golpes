@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metodologia e ressalvas — Golpes e Pix no Brasil</title>
+<meta name="description" content="Fontes, recortes e limitações dos dados de estelionato (Anuário FBSP) e do Pix (Banco Central).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<header class="barra">
+  <div class="wrap">
+    <a class="logo" href="https://www.desenvolvedorgustavolopes.com.br/"><span>~/</span>gustavo</a>
+    <nav class="menu" aria-label="Navegação principal">
+      <ul>
+        <li><a href="index.html">#início</a></li>
+        <li><a href="metodologia.html" aria-current="page">#metodologia</a></li>
+        <li><a href="https://github.com/guh99998/analise-golpes" target="_blank" rel="noopener noreferrer">#github</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <main id="conteudo" class="met">
+    <div class="hero">
+      <p class="eyebrow">// metodologia</p>
+      <h1>Como os dados foram tratados, e onde não dá para confiar</h1>
+      <p class="lead">Uma pesquisa honesta mostra o que os dados não dizem. Estas são as inconsistências e limitações encontradas.</p>
+    </div>
+
+    <h2><span class="hash">#</span> Fontes e recorte</h2>
+    <ul>
+      <li><b>Anuário Brasileiro de Segurança Pública (FBSP):</b> tabela de estelionato e estelionato por meio eletrônico, Brasil e 27 UFs, 2018 a 2025 (edições 16 a 20).</li>
+      <li><b>Banco Central, transações Pix:</b> quantidade e valor por mês, de nov/2020 em diante.</li>
+      <li><b>Banco Central, MED:</b> contestações de Pix por suspeita de fraude, de jan/2022 em diante, só total nacional.</li>
+      <li><b>Recorte:</b> 2018 em diante. Antes disso o Anuário não tem estelionato por UF comparável, e misturar outra fonte quebraria a série.</li>
+    </ul>
+    <h3>Eras</h3>
+    <table>
+      <thead><tr><th>Era</th><th>Período</th></tr></thead>
+      <tbody>
+        <tr><td>Pré-Pix</td><td>2018–2019</td></tr>
+        <tr><td>Transição</td><td>2020 (Pix só em nov e dez)</td></tr>
+        <tr><td>Pix</td><td>2021–2022</td></tr>
+        <tr><td>Pix + IA</td><td>2023–2025</td></tr>
+      </tbody>
+    </table>
+    <p>O corte da “era IA” em 2023 foi definido antes de olhar os dados, pela popularização da IA generativa. Os dados não medem uso de IA: é um corte no tempo, que mostra correlação, não causa.</p>
+
+    <h2><span class="hash">#</span> Mudanças de definição</h2>
+    <ol>
+      <li><b>Lei 14.155/2021:</b> desde 2021 o estelionato (art. 171 do Código Penal) inclui a fraude eletrônica. A coluna “Estelionato” é o total, e “eletrônico” é um subconjunto.</li>
+      <li><b>A era Pix coincide com a pandemia e com a nova lei.</b> O salto de 2019 para 2021 (524 mil para 1,31 milhão de registros) não pode ser atribuído só ao Pix. O maior aumento (+77% nos registros, +70% na taxa por 100 mil) foi em 2020, com o Pix existindo só em nov e dez (154 milhões de transações, contra 8 bilhões em 2021).</li>
+      <li><b>Revisões entre edições:</b> a primeira coluna de cada edição do Anuário atualiza o ano anterior. Vale sempre a edição mais recente que traz o ano. Exemplo, Brasil 2021: 1.265.073 (16ª edição) e 1.312.964 (17ª).</li>
+    </ol>
+
+    <h2><span class="hash">#</span> Lacunas e quebras por estado</h2>
+    <ol>
+      <li><b>Estelionato eletrônico incompleto:</b> Ceará, Rio de Janeiro e São Paulo não têm esse dado em nenhum ano, e vários outros estados têm falhas. O total do Brasil dessa coluna subestima o fenômeno.</li>
+      <li><b>Maranhão:</b> não informou estelionato em 2018 e 2019.</li>
+      <li><b>Amapá 2018–2019:</b> números só da capital.</li>
+      <li><b>Pará:</b> o eletrônico de 2023 caiu de 16.884 para 1.686 por mudança de metodologia; há quebra de série. Os dados também podem incluir registros da delegacia virtual, sem supervisão, com risco de duplicidade.</li>
+      <li><b>Rio Grande do Sul:</b> o eletrônico só é registrado desde 27/07/2023 (2023 cobre cerca de 5 meses).</li>
+      <li><b>Pernambuco:</b> fraude eletrônica só é contada desde dez/2024.</li>
+      <li><b>Critérios de registro:</b> alguns estados contam tentados e consumados juntos; outros não distinguem estelionato comum de eletrônico em certos campos. Diferenças de taxa entre estados refletem também como cada um registra, não só quantos golpes ocorrem.</li>
+      <li><b>População:</b> as taxas por 100 mil usam estimativas do IBGE que mudam entre edições (Censo 2022 nas mais recentes). Isso afeta as taxas, não os números absolutos.</li>
+    </ol>
+
+    <h2><span class="hash">#</span> Dados do Banco Central</h2>
+    <ol>
+      <li><b>MED começa em jan/2022</b> na API, e é nacional, sem divisão por estado ou tipo de golpe.</li>
+      <li><b>Contestado não é golpe:</b> o número de Pix contestados cresceu de 2,1 milhões (2022) para 22,2 milhões (2025), mas as contestações aceitas ficaram entre 1,6 e 4,9 milhões. As aceitas são a medida mais próxima de fraude confirmada.</li>
+      <li><b>Denominador:</b> as transações Pix não incluem as liquidadas dentro da própria instituição, então o total real é um pouco maior.</li>
+      <li><b>“Estelionato por milhão de Pix”:</b> divide o estelionato total (com e sem Pix) pelas transações Pix. Não é a taxa de golpes dentro do Pix. Só é calculado para anos completos (2021 a 2025).</li>
+    </ol>
+
+    <h2><span class="hash">#</span> O que os dados não medem</h2>
+    <ul>
+      <li>Nenhum dado separa golpe por meio de pagamento (dinheiro, Pix, boleto).</li>
+      <li>Nenhum dado diz se houve uso de IA.</li>
+      <li>Faixa etária e perfil da vítima não estão nas fontes usadas.</li>
+      <li><b>Subnotificação:</b> os dados são boletins de ocorrência, e muito golpe nunca é registrado.</li>
+      <li>O “antes do Pix” tem só dois anos (2018 e 2019), então a tendência de base é fraca.</li>
+    </ul>
+
+    <h2><span class="hash">#</span> Reprodutibilidade</h2>
+    <p>O código de download, extração e análise, os dados tratados e o README completo estão no repositório do projeto. Os arquivos originais do Anuário não estão incluídos; o README indica onde baixá-los.</p>
+    <p><a href="index.html">← voltar aos gráficos</a></p>
+  </main>
+
+  <footer>
+    <p>Pesquisa de Gustavo Rodrigues Lopes. Código escrito com o apoio do Claude Code (IA da Anthropic); pergunta, recorte e interpretação são do autor.</p>
+    <p><a href="https://www.desenvolvedorgustavolopes.com.br/">← voltar ao portfólio</a></p>
+  </footer>
+</div>
+</body>
+</html>

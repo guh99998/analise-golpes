@@ -1,0 +1,15 @@
+# Arquivos originais do Anuário (pesados e do FBSP): baixe conforme data/raw/anuario/LEIAME.md
+data/raw/anuario/*
+!data/raw/anuario/LEIAME.md
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Ferramentas e sistema
+.playwright-mcp/
+.vercel/
+.DS_Store
+Thumbs.db
