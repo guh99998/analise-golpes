@@ -1,5 +1,6 @@
-/* Paleta e tipografia alinhadas ao portfólio (zinc + roxo, Inter + JetBrains Mono) */
+/* Paleta e tipografia alinhadas ao portfólio (zinc + roxo, Inter + JetBrains Mono). Tema sempre claro. */
 :root {
+  color-scheme: light;
   --bg: #fafafa;
   --fg: #18181b;
   --surface: #ffffff;
@@ -14,14 +15,6 @@
   --band-ia: rgba(109, 40, 217, 0.17);
   --radius: 6px;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #18181b; --fg: #fafafa; --surface: #212126; --line: #3f3f46; --muted: #a1a1aa;
-    --accent: #a78bfa; --accent-soft: #2b2240; --alt: #fbbf24;
-    --band-pre: rgba(161, 161, 170, 0.10); --band-trans: rgba(251, 191, 36, 0.13);
-    --band-pix: rgba(167, 139, 250, 0.09); --band-ia: rgba(167, 139, 250, 0.20);
-  }
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 80px; }
@@ -61,7 +54,6 @@ select { font: inherit; font-size: 15px; color: var(--fg); background: var(--bg)
 .seg button:last-child { border-right: 0; }
 .seg button:hover:not(:disabled):not([aria-pressed="true"]) { background: var(--accent-soft); }
 .seg button[aria-pressed="true"] { background: var(--accent); color: #fff; font-weight: 500; }
-@media (prefers-color-scheme: dark) { .seg button[aria-pressed="true"] { color: #18181b; } }
 .seg button:disabled { opacity: .4; cursor: not-allowed; }
 .check { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; min-height: 40px; }
 .check input { width: 18px; height: 18px; accent-color: var(--accent); }

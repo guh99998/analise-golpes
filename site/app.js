@@ -210,7 +210,6 @@
   function iniciar() {
     fetch("dados.json").then(function (r) { return r.json(); }).then(function (d) {
       dados = d; ligarControles(); sincronizar(); desenhar(); graficosPix();
-      if (window.matchMedia) window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () { desenhar(); graficosPix(); });
     }).catch(function () {
       $("aviso").textContent = "Não foi possível carregar os dados. Recarregue a página.";
     });
